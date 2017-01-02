@@ -6,6 +6,6 @@ RUN npm install
 
 EXPOSE 6996
 
-ENTRYPOINT ["npm", "start"]
+CMD ["npm", "start"]
 
-# docker run -d --name primordial -p 6996:6996 tripdubroot/primordial
+# docker run -d --name deity -p 6996:6996 tripdubroot/deity

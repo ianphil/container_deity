@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "prestart": "babel-node scripts/startMessage.js",
-    "start": "npm-run-all --parallel security-check open:web lint test",
+    "start": "npm run open:web",
+    "dev": "npm-run-all --parallel security-check open:web lint test",
     "open:web": "babel-node svr/server.js",
     "security-check": "nsp check",
     "localtunnel": "lt --port 6996",
