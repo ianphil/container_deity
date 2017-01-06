@@ -2,7 +2,7 @@
   "name": "demigod",
   "version": "0.0.1",
   "description": "Demigod is an automated provisioner for Azure and Docker",
-  "main": "server.js",
+  "main": "svr/server.js",
   "scripts": {
     "prestart": "babel-node scripts/startMessage.js",
     "start": "npm run open:web",
@@ -14,11 +14,13 @@
     "lint": "esw scripts svr src --color",
     "lint:watch": "npm run lint -- --watch",
     "test": "mocha --reporter progress scripts/testSetup.js \"src/**/*.spec.js\" \"svr/**/*.spec.js\"",
+    "test:debug": "mocha --debug-brk --reporter progress scripts/testSetup.js \"src/**/*.spec.js\" \"svr/**/*.spec.js\"",
     "test:watch": "npm test -- --watch",
     "generate-mock-data": "babel-node scripts/generateMockData.js",
     "prestart-mockapi": "npm run generate-mock-data",
     "start-mockapi": "json-server --watch src/fakeApi/db.json --port 6970",
-    "parse-yaml": "babel-node src/ymlParser/ymlParser.js"
+    "parse-yaml": "babel-node src/ymlParser/ymlParser.js",
+    "debug": "node --nolazy --debug-brk=5858 myProgram.js"
   },
   "repository": {
     "type": "git",
