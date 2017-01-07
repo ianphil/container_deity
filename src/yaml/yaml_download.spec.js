@@ -1,21 +1,20 @@
-import {expect} from 'chai';
-import parser from './yaml_download.js';
-import fs from 'fs';
+var expect = require('chai').expect;
+var down = require('./yaml_download.js');
+var yaml = require('js-yaml');
 
-describe('Yaml Download', () => {
-  let filePath = 'src/yaml/.deity.yml';
-  let ymlPayload = fs.readFileSync(filePath, 'utf8');
+describe('Yaml Download', function() {
+  var filepath = 'https://raw.githubusercontent.com/tripdubroot/deity/dev/src/yaml/.deity.yml';
 
-  it('Parse should return json', () => {
-    let actual = JSON.stringify(parser.parse(ymlPayload));
-    let expected = JSON.stringify({ service: { instance: 1, name: 'deity' } });
-
-    expect(expected).to.equal(actual);
+  it('Download should return yaml', function() {
+    var expected = yaml.safeDump({ service: { instance: 1, name: 'deity' } });
+    down(filepath, (actual) => {
+      expect(expected).to.equal(actual);
+    });
   });
 
-  it('Validate should throw error.', () => {
-    let actual = parser.validate(ymlPayload);
-
-    expect(actual).to.be.true;
+  it('Yaml should be a string', function() {
+    down(filepath, (actual) => {
+      expect(actual).to.be.a('string');
+    });
   });
 });

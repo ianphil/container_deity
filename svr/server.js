@@ -1,7 +1,7 @@
-import express from 'express';
-import bodyParser from 'body-parser';
-import open from 'open';
-import os from 'os';
+var express = require('express');
+var bodyParser = require('body-parser');
+var open = require('open');
+var os = require('os');
 
 /* eslint-disable no-console */
 

@@ -1,26 +1,22 @@
 {
-  "name": "demigod",
+  "name": "deity",
   "version": "0.0.1",
-  "description": "Demigod is an automated provisioner for Azure and Docker",
+  "description": "deity is a docker provisioner",
   "main": "svr/server.js",
   "scripts": {
-    "prestart": "babel-node scripts/startMessage.js",
+    "prestart": "node scripts/start_message.js",
     "start": "npm run open:web",
     "dev": "npm-run-all --parallel security-check open:web lint test",
-    "open:web": "babel-node svr/server.js",
+    "open:web": "node svr/server.js",
     "security-check": "nsp check",
     "localtunnel": "lt --port 6996",
     "share": "npm-run-all --parallel open:web localtunnel",
     "lint": "esw scripts svr src --color",
-    "lint:watch": "npm run lint -- --watch",
-    "test": "mocha --reporter progress scripts/testSetup.js \"src/**/*.spec.js\" \"svr/**/*.spec.js\"",
-    "test:debug": "mocha --debug-brk --reporter progress scripts/testSetup.js \"src/**/*.spec.js\" \"svr/**/*.spec.js\"",
-    "test:watch": "npm test -- --watch",
-    "generate-mock-data": "babel-node scripts/generateMockData.js",
+    "test": "mocha --reporter progress \"src/**/*.spec.js\" \"svr/**/*.spec.js\"",
+    "test:debug": "mocha --debug-brk \"src/**/*.spec.js\" \"svr/**/*.spec.js\"",
+    "generate-mock-data": "node scripts/generate_mock_data.js",
     "prestart-mockapi": "npm run generate-mock-data",
-    "start-mockapi": "json-server --watch src/fakeApi/db.json --port 6970",
-    "parse-yaml": "babel-node src/ymlParser/ymlParser.js",
-    "debug": "node --nolazy --debug-brk=5858 myProgram.js"
+    "start-mockapi": "json-server --watch src/fakeApi/db.json --port 6970"
   },
   "repository": {
     "type": "git",
@@ -33,10 +29,6 @@
   },
   "homepage": "https://github.com/PixelPlayoffs/demigod#readme",
   "dependencies": {
-    "babel-cli": "^6.18.0",
-    "babel-core": "^6.21.0",
-    "babel-preset-latest": "^6.16.0",
-    "babel-register": "^6.18.0",
     "body-parser": "^1.15.2",
     "chai": "^3.5.0",
     "chalk": "^1.1.3",
@@ -50,11 +42,9 @@
     "json-server": "^0.9.4",
     "localtunnel": "^1.8.2",
     "mocha": "^3.2.0",
+    "node-fetch": "^1.6.3",
     "npm-run-all": "^3.1.2",
     "nsp": "^2.6.2",
     "open": "0.0.5"
-  },
-  "devDependencies": {
-    "babel-preset-es2015-node": "^6.1.1"
   }
 }

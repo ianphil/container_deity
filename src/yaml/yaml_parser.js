@@ -1,7 +1,6 @@
-import fs from 'fs';
-import yaml from 'js-yaml';
+var yaml = require('js-yaml');
 
-export default {
+module.exports = {
   parse: (payload) => {
     try {
       var doc = yaml.safeLoad(payload);
@@ -18,4 +17,4 @@ export default {
       return false
     }
   }
-}
+};

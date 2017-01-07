@@ -4,10 +4,10 @@
    and rapid page loads due to local, static data.
  */
 
-import jsf from 'json-schema-faker';
-import {schema} from './mockDataSchema';
-import fs from 'fs';
-import chalk from 'chalk';
+var jsf = require('json-schema-faker');
+var schema = require('./mock_data_schema').schema;
+var fs = require('fs');
+var chalk = require('chalk');
 
 var json = JSON.stringify(jsf(schema));
 

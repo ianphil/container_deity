@@ -1,7 +1,10 @@
-var http = require('http');
-var fs = require('fs');
+var fetch = require('node-fetch');
 
-var file = fs.createWriteStream("file.jpg");
-var request = http.get("http://i3.ytimg.com/vi/J---aiyznGQ/mqdefault.jpg", function(response) {
-  response.pipe(file);
-});
+module.exports = (filepath, callback) => {
+  fetch(filepath)
+    .then(function(res) {
+        return res.text();
+    }).then(function(body) {
+        callback(body);
+    });
+};

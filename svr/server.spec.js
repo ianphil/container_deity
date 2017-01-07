@@ -1,4 +1,4 @@
-import {expect} from 'chai';
+var expect = require('chai').expect;
 
 describe('Our first test', () => {
   it('Should pass', () => {
