@@ -6,12 +6,11 @@ var os = require('os');
 /* eslint-disable no-console */
 
 var app = express();
-
 app.use(bodyParser.json());
-const port = 6996;
 
+const port = 6996;
 var healthConfig = {
-  svcName: 'Demigod',
+  svcName: 'deity',
   host: os.hostname(),
   status: 'green'
 };
