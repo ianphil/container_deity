@@ -5,8 +5,11 @@ var fs = require('fs');
 describe('Docker Commands', function() {
   var filepath = './testhook.json';
 
-  it('Container exists', function() {
-    var actual = docker.container_exists('ubuntu');
-    expect(actual).to.be.true;
+  it('Container exists', function(done) {
+    docker.container_exists('ubuntu')
+      .then((data) => {
+        expect(true).to.be.true;
+        done();
+      });
   });
 });
