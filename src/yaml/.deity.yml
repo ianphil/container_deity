@@ -1,4 +1,4 @@
 service:
-  instance: 2
+  instance: 1
   name: deity
 
