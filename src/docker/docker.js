@@ -3,10 +3,12 @@ var docker = new dockerode();
 
 var docker_commands = {
   container_exists: (container_name) => {
-    var container = docker.getContainer(container_name);
-    container.inspect(function (err, data) {
-      if (err) { return false; }
-      else { return true; }
+    return new Promise((resolve, reject) => {
+      var container = docker.getContainer(container_name);
+      container.inspect(function (err, data) {
+        if (err) { resolve(false); }
+        else { resolve(true); }
+      });
     });
   },
   run_container: (repo_name, args) => {
